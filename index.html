@@ -51,29 +51,69 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="css/style.css" />
 
-    <!-- Mobile cover image fix + general improvements -->
+    <!-- Cover image: landscape photo, center-focus on all devices -->
     <style>
-      /* ── Cover / Hero ── */
-      #fh5co-header.fh5co-cover {
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        min-height: 100vh;
+      /* ── Reset any theme height/display on header ── */
+      #fh5co-header.fh5co-cover,
+      #fh5co-header.fh5co-cover .display-t {
+        height: auto !important;
+        min-height: 0 !important;
       }
 
-      /* Mobile: keep the focal point visible */
-      @media (max-width: 767px) {
-        #fh5co-header.fh5co-cover {
-          background-position: center top;
-          min-height: 100svh; /* use small viewport height on mobile browsers */
-        }
+      /* ── Hero section ── */
+      #fh5co-header.fh5co-cover {
+        background-size: cover !important;
+        background-position: center center !important; /* keeps face in view */
+        background-repeat: no-repeat !important;
+        background-attachment: scroll !important;      /* scroll = safe on iOS */
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
 
-        /* Slightly reduce heading size so nothing clips */
-        #fh5co-header h1 {
-          font-size: 2rem;
+        /* Desktop: tall enough to look cinematic */
+        min-height: 85vh !important;
+      }
+
+      /* ── Inner content ── */
+      #fh5co-header.fh5co-cover .display-t {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 100px 24px 60px !important;
+        box-sizing: border-box !important;
+        min-height: 85vh !important;
+      }
+
+      /* ── Tablet ── */
+      @media (max-width: 991px) {
+        #fh5co-header.fh5co-cover,
+        #fh5co-header.fh5co-cover .display-t {
+          min-height: 70vh !important;
         }
-        #fh5co-header h2 {
-          font-size: 1.1rem;
+      }
+
+      /* ── Mobile portrait ── */
+      @media (max-width: 767px) {
+        #fh5co-header.fh5co-cover,
+        #fh5co-header.fh5co-cover .display-t {
+          /* Shorter height so more of the wide image is visible */
+          min-height: 55vw !important; /* scales with screen width — shows ~60% of landscape */
+        }
+        #fh5co-header.fh5co-cover .display-t {
+          padding: 60px 16px 32px !important;
+        }
+        #fh5co-header h1 { font-size: 1.7rem !important; }
+        #fh5co-header h2 { font-size: 0.95rem !important; }
+        .btn.btn-sm      { padding: 10px 20px !important; font-size: 0.95rem !important; }
+      }
+
+      /* ── Mobile landscape (phone rotated) ── */
+      @media (max-width: 900px) and (orientation: landscape) {
+        #fh5co-header.fh5co-cover,
+        #fh5co-header.fh5co-cover .display-t {
+          min-height: 100vh !important;
         }
       }
 
@@ -154,13 +194,9 @@
           <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
               <div class="display-t">
-                <div
-                  class="display-tc animate-box"
-                  data-animate-effect="fadeIn"
-                >
+                <div class="display-tc animate-box" data-animate-effect="fadeIn">
                   <h1>DhanaSekar &amp; Chitra</h1>
                   <h2 class="catamaran-font">We are getting married!</h2>
-
                   <p>
                     <a
                       href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=DhanaSekar+%26+Chitra+Wedding&dates=20260430T073000/20260430T090000&details=You+are+invited+to+our+wedding&location=Tamil+Nadu"

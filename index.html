@@ -428,7 +428,7 @@
     <!-- Main -->
     <script src="js/main.js"></script>
 
-    <script>
+    <!-- <script>
       var d = new Date(2026, 3, 30, 7, 30, 0); // month is 0-indexed: 3 = April
       simplyCountdown(".simply-countdown-one", {
         year: d.getFullYear(),
@@ -437,7 +437,32 @@
         hours: d.getHours(),
         minutes: d.getMinutes(),
       });
-    </script>
+    </script> -->
+
+<script>
+  // Set IST time explicitly (IMPORTANT)
+  var targetDate = new Date("2026-04-30T07:30:00+05:30");
+
+  simplyCountdown(".simply-countdown-one", {
+    year: targetDate.getFullYear(),
+    month: targetDate.getMonth() + 1,
+    day: targetDate.getDate(),
+    hours: targetDate.getHours(),
+    minutes: targetDate.getMinutes(),
+    seconds: targetDate.getSeconds(),
+
+    words: {
+      days: 'days',
+      hours: 'hours',
+      minutes: 'minutes',
+      seconds: 'seconds'
+    },
+
+    plural: true,
+    inline: false,
+    enableUtc: false // keep this FALSE for IST
+  });
+</script>
 
     <!-- Demo / sticky footer -->
     <script src="js/demoscript.js"></script>
